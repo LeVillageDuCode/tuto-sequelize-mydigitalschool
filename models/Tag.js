@@ -1,6 +1,8 @@
-const Tag = sequelize.define('tag', {
+const { DataTypes } = require("sequelize");
+
+const Tag = (sequelize) => sequelize.define('tag', {
     name: {
-        type: Sequelize.STRING(20)
+        type: DataTypes.STRING(20)
     }
 })
 

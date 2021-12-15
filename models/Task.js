@@ -1,10 +1,13 @@
-const Task = sequelize.define('task', {
+const { DataTypes } = require("sequelize");
+
+// function Task(sequelize) { return sequelize.define(... }
+const Task = (sequelize) => sequelize.define('task', {
     content: {
-        type: Sequelize.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
      status: {
-        type: Sequelize.BOOLEAN,
+        type: DataTypes.BOOLEAN,
         allowNull: false
     }
 })

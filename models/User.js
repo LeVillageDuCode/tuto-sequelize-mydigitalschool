@@ -1,12 +1,14 @@
-const User = sequelize.define('user', {
+const {DataTypes} = require('sequelize');
+
+const User = (sequelize) => sequelize.define('user', {
     firstname: {
-        type: Sequelize.STRING(50)
+        type: DataTypes.STRING(50)
     },
     lastname: {
-        type: Sequelize.STRING(50)
+        type: DataTypes.STRING(50)
     },
     email: {
-        type: Sequelize.STRING(100),
+        type: DataTypes.STRING(100),
         allowNull: false
     }
 })

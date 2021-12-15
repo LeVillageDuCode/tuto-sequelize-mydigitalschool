@@ -5,9 +5,9 @@ const sequelize = new Sequelize('sqlite:datas.db');
 // On est en train de récupérer nos modèles pour établir le schéma
 const Post = require('./Post')(sequelize);
 
-const Task = require('./Task');
-const User = require('./User');
-const Tag = require('./Tag');
+const Task = require('./Task')(sequelize);
+const User = require('./User')(sequelize);
+const Tag = require('./Tag')(sequelize);
 
 // Un article peut être écrit par une seule personne
 Post.belongsTo(User)
