@@ -1,6 +1,5 @@
-const { DataTypes } = require("sequelize");
 
-const Tag = (sequelize) => sequelize.define('tag', {
+const Tag = (sequelize, DataTypes) => sequelize.define('tag', {
     name: {
         type: DataTypes.STRING(20)
     }

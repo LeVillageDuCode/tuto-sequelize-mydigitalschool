@@ -1,13 +1,13 @@
 // On a récupéré ce qu'il faut pour initialiser la BDD
-const { Sequelize } = require('sequelize');
+const { DataTypes, Sequelize } = require('sequelize');
 const sequelize = new Sequelize('sqlite:datas.db');
 
 // On est en train de récupérer nos modèles pour établir le schéma
-const Post = require('./Post')(sequelize);
+const Post = require('./Post')(sequelize, DataTypes);
 
-const Task = require('./Task')(sequelize);
-const User = require('./User')(sequelize);
-const Tag = require('./Tag')(sequelize);
+const Task = require('./Task')(sequelize, DataTypes);
+const User = require('./User')(sequelize, DataTypes);
+const Tag = require('./Tag')(sequelize, DataTypes);
 
 // Un article peut être écrit par une seule personne
 Post.belongsTo(User)

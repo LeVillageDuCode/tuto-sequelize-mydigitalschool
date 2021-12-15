@@ -1,6 +1,5 @@
-const { DataTypes } = require('sequelize');
 
-function Post(sequelize) {
+function Post(sequelize, DataTypes) {
     return sequelize.define('post', {
         title: {
             // Sequelize.STRING -> MAX 255 caractères
