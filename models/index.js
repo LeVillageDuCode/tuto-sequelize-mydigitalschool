@@ -1,6 +1,17 @@
 // On a récupéré ce qu'il faut pour initialiser la BDD
 const { DataTypes, Sequelize } = require('sequelize');
-const sequelize = new Sequelize('sqlite:datas.db');
+
+// Si une propriété (générée automatiquement par Heroku)
+// n'existe pas, c'est que je suis en local
+// et donc j'aurai besoin d'importer et configurer dotenv
+if(!process.env.NODE_ENV) {
+    const dotenv = require('dotenv');
+    dotenv.config();
+}
+
+// en local DATABASE_URL vaut ça -> sqlite:datas.db
+// en prod DATABASE_URL va valoir qqchose du style pgsql://
+const sequelize = new Sequelize(process.env.DATABASE_URL);
 
 // On est en train de récupérer nos modèles pour établir le schéma
 const Post = require('./Post')(sequelize, DataTypes);
