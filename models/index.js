@@ -12,7 +12,16 @@ if(!process.env.NODE_ENV || process.env.NODE_ENV !== "production") {
     sequelize = new Sequelize(process.env.DATABASE_URL);
 }
 else {
-    sequelize = new Sequelize(process.env.DATABASE_URL + '?ssl=true');
+    sequelize = new Sequelize(process.env.DATABASE_URL, {
+        dialect: 'postgres',
+        protocol: 'postgres',
+        dialectOptions: {
+            ssl: {
+                require: true,
+                rejectUnauthorized: false
+            }
+        }
+    });
 }
 
 // en local DATABASE_URL vaut ça -> sqlite:datas.db
