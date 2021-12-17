@@ -2,7 +2,7 @@
 const { DataTypes, Sequelize } = require('sequelize');
 
 
-const sequelize;
+let sequelize=null;
 // Si une propriété (générée automatiquement par Heroku)
 // n'existe pas, c'est que je suis en local
 // et donc j'aurai besoin d'importer et configurer dotenv
