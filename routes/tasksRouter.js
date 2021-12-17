@@ -16,6 +16,22 @@ router.get('/:taskId',(req,res) => {
     .then(() => res.json({msg: "Tache supprimée!"}))
 })
 
+router.post('/', (req, res ) => {
+    sequelize.models.task.create(req.body)
+    .then(taskCreated => {
+        res.status(201).json(taskCreated);
+    })
+})
+
+router.patch('/:taskId', (req, res) => {
+    sequelize.models.task.update(req.body,
+        {where: {id : req.params.taskId} })
+    .then(nbRowsUpdated => {
+        res.json(nbRowsUpdated);
+    })
+})
+
+
 router.delete('/:taskId',(req,res) => {
     sequelize.models.task.findByPk(req.params.taskId)
     .then(task => res.json(task))

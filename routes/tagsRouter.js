@@ -15,12 +15,17 @@ router.get('/:tagId',(req,res) => {
 })
 
 router.post('/', (req, res ) => {
-    // Recevoir ce qu'il y a dans le body
-    // de la requête
-    console.log(req.body);
     sequelize.models.tag.create(req.body)
     .then(tagCreated => {
         res.status(201).json(tagCreated);
+    })
+})
+
+router.patch('/:tagId', (req, res) => {
+    sequelize.models.tag.update(req.body,
+        {where: {id : req.params.tagId} })
+    .then(nbRowsUpdated => {
+        res.json(nbRowsUpdated);
     })
 })
 
